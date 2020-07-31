@@ -4,13 +4,13 @@ using R2API.Utils;
 namespace ScrapScissors
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
-    [R2APISubmoduleDependency(new string[] { "ResourcesAPI", "LanguageAPI", "ItemAPI"})]
+    [R2APISubmoduleDependency(new string[] { "ResourcesAPI", "LanguageAPI", "ItemAPI" })]
     [BepInPlugin(modGuid, modName, modVer)]
     public sealed class ScissorsPlugin : BaseUnityPlugin
     {
         private const string modName = "RustyScissors";
         private const string modGuid = "com.RicoValdezio." + modName;
-        private const string modVer = "0.0.1";
+        private const string modVer = "1.0.0";
         internal static ScissorsPlugin instance;
 
         private void Awake()

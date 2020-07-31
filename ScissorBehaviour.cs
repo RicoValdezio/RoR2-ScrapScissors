@@ -19,7 +19,7 @@ namespace ScrapScissors
 
         private void LateUpdate()
         {
-            if(scrapAmount >= 100)
+            if (scrapAmount >= 100)
             {
                 scrapAmount -= 100;
                 PickupIndex index = dropTable.GenerateDrop(Run.instance.treasureRng);
@@ -30,7 +30,7 @@ namespace ScrapScissors
         private void GlobalEventManager_OnCharacterDeath(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport damageReport)
         {
             orig(self, damageReport);
-            if(damageReport.attackerBody && damageReport.attackerBody == body)
+            if (damageReport.attackerBody && damageReport.attackerBody == body)
             {
                 GiveScrap(damageReport.victimIsElite, damageReport.victimIsBoss);
             }

@@ -1,0 +1,10 @@
+﻿{
+    "name": "RustyScissors",
+    "version_number": "1.0.0",
+    "website_url": "https://github.com/RicoValdezio/ScrapScissors-Plugin",
+    "description": "An item that recreates the Artifact of Sacrifice behaviour",
+    "dependencies": [
+        "bbepis-BepInExPack-3.2.0",
+        "tristanmcpherson-R2API-2.4.29"
+    ]
+}

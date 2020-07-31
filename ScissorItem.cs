@@ -1,5 +1,7 @@
 ﻿using R2API;
 using RoR2;
+using System.Reflection;
+using UnityEngine;
 
 namespace ScrapScissors
 {
@@ -9,10 +11,20 @@ namespace ScrapScissors
 
         internal static void Init()
         {
-            //LoadAssets();
+            AddProvider();
             AddTokens();
             AddItem();
             On.RoR2.CharacterBody.OnInventoryChanged += CharacterBody_OnInventoryChanged;
+        }
+
+        private static void AddProvider()
+        {
+            using (System.IO.Stream stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("ScrapScissors.ScissorBundle"))
+            {
+                AssetBundle bundle = AssetBundle.LoadFromStream(stream);
+                AssetBundleResourcesProvider provider = new AssetBundleResourcesProvider("@ScissorBundle", bundle);
+                ResourcesAPI.AddProvider(provider);
+            }
         }
 
         private static void AddTokens()
@@ -33,8 +45,8 @@ namespace ScrapScissors
                 descriptionToken = "SCISSORS_DESC_TOKEN",
                 loreToken = "SCISSORS_LORE_TOKEN",
                 tier = ItemTier.Tier1,
-                pickupIconPath = null,
-                pickupModelPath = null,
+                pickupIconPath = "@ScissorBundle:Assets/Scissor/ScissorIcon.png",
+                pickupModelPath = "@ScissorBundle:Assets/Scissor/ScissorPrefab.prefab",
                 canRemove = true,
                 hidden = false,
                 tags = new ItemTag[]
