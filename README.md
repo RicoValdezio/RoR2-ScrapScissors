@@ -1,4 +1,5 @@
 ﻿# Affix Generator
+
 Basic Description
 ------------
 This mod includes one new item: Rusty Scissors which is based loosely on the Rusted Key from RoR2 and the 56-Leaf Clover from RoR1.
@@ -30,4 +31,5 @@ Place the .dll in Risk of Rain 2\BepInEx\plugins
 
 Contact
 ------------
-If you have issues/suggestions, leave them on the github as an issue/suggestion.
+If you have issues/suggestions leave them on the github as an issue/suggestion
+  or reach out to @Rico#6416 on the modding Discord.
