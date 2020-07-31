@@ -16,6 +16,7 @@ namespace ScrapScissors
         private void Awake()
         {
             if (instance == null) instance = this;
+            ScissorConfig.Init();
             ScissorItem.Init();
         }
     }

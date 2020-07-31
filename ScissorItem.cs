@@ -1,5 +1,6 @@
 ﻿using R2API;
 using RoR2;
+using System;
 using System.Reflection;
 using UnityEngine;
 
@@ -32,7 +33,15 @@ namespace ScrapScissors
             LanguageAPI.Add("SCISSORS_NAME_TOKEN", "Rusty Scissors");
             LanguageAPI.Add("SCISSORS_PICK_TOKEN", "Converts defeated enemies into useful scrap material.");
             LanguageAPI.Add("SCISSORS_DESC_TOKEN", "Defeated enemies generate scrap that is converted to random items.");
-            LanguageAPI.Add("SCISSORS_LORE_TOKEN", "Never underestimate the usefulness of a pair of handy survival scissors.");
+            string longLore = "Order: Pair of Regulation Emergency Scissors" + Environment.NewLine +
+                              "Tracking Number: 15******" + Environment.NewLine + 
+                              "Estimated Delivery: March 27, 2559" + Environment.NewLine +
+                              "Shipping Method: Standard" + Environment.NewLine +
+                              "Shipping Address: Hämeentie 135 A, P.O. Box 130, Helsinki, Finland" + Environment.NewLine +
+                              "Shipping Notes:" + Environment.NewLine + Environment.NewLine +
+                              "I have no idea why you would even need this particular model, scissors as a whole were made completely irrelevant when that fancy new laser-tech was invented, but I'll leave you to your wild fantasies of reviving the great Art of Scissoring." + Environment.NewLine + Environment.NewLine +
+                              "Since you're so gun-ho about this pair, I might as well let you know that it's a relic of the Great War, some ancient conflict on Earth. Anyways, these belong to a medic with a pretty extraordinary track record. Maybe it'll bring you the same luck as it brought him.";
+            LanguageAPI.Add("SCISSORS_LORE_TOKEN", longLore);
         }
 
         private static void AddItem()

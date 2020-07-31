@@ -19,9 +19,9 @@ namespace ScrapScissors
 
         private void LateUpdate()
         {
-            if (scrapAmount >= 100)
+            if (scrapAmount >= ScissorConfig.maxScrap)
             {
-                scrapAmount -= 100;
+                scrapAmount -= ScissorConfig.maxScrap;
                 PickupIndex index = dropTable.GenerateDrop(Run.instance.treasureRng);
                 PickupDropletController.CreatePickupDroplet(index, body.corePosition, Vector3.up * 20f);
             }

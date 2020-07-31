@@ -1,6 +1,4 @@
-﻿# Affix Generator
-
-Basic Description
+﻿Basic Description
 ------------
 This mod includes one new item: Rusty Scissors which is based loosely on the Rusted Key from RoR2 and the 56-Leaf Clover from RoR1.
 When a monster is killed while this is in the inventory, a random amount of "scrap" will be given to the player (this is currently hidden).
@@ -23,6 +21,7 @@ Known Issues/Planned Updates
 
 Changelog
 ------------
+1.1.0 - Fixed the readme, changed the lore, and added a bit of configuration
 1.0.0 - Initial Upload
 
 Installation
