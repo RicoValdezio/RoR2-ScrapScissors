@@ -1,7 +1,7 @@
 ﻿using R2API;
 using RoR2;
 
-namespace Scissors
+namespace ScrapScissors
 {
     internal class ScissorItem
     {
@@ -12,6 +12,7 @@ namespace Scissors
             //LoadAssets();
             AddTokens();
             AddItem();
+            On.RoR2.CharacterBody.OnInventoryChanged += CharacterBody_OnInventoryChanged;
         }
 
         private static void AddTokens()
@@ -45,6 +46,15 @@ namespace Scissors
             ItemDisplayRule[] rules = new ItemDisplayRule[0];
             CustomItem item = new CustomItem(def, rules);
             index = ItemAPI.Add(item);
+        }
+
+        private static void CharacterBody_OnInventoryChanged(On.RoR2.CharacterBody.orig_OnInventoryChanged orig, CharacterBody self)
+        {
+            orig(self);
+            if (!self.gameObject.GetComponent<ScissorBehaviour>() && self.inventory.GetItemCount(index) != 0)
+            {
+                self.gameObject.AddComponent<ScissorBehaviour>();
+            }
         }
     }
 }

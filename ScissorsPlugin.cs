@@ -1,7 +1,7 @@
 ﻿using BepInEx;
 using R2API.Utils;
 
-namespace Scissors
+namespace ScrapScissors
 {
     [BepInDependency("com.bepis.r2api", BepInDependency.DependencyFlags.HardDependency)]
     [R2APISubmoduleDependency(new string[] { "ResourcesAPI", "LanguageAPI", "ItemAPI"})]

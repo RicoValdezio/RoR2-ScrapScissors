@@ -26,6 +26,9 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>..\..\..\..\Documents\Libs\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.Networking">
+      <HintPath>..\..\..\..\Documents\Libs\UnityEngine.Networking.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
