@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScrapScissors", "ScrapScissors.csproj", "{FFCF3654-BFAE-4EB0-872A-7AFBEB420188}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFCF3654-BFAE-4EB0-872A-7AFBEB420188}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFCF3654-BFAE-4EB0-872A-7AFBEB420188}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFCF3654-BFAE-4EB0-872A-7AFBEB420188}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFCF3654-BFAE-4EB0-872A-7AFBEB420188}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C6F4F93F-A3F7-420E-A988-159F1DFA48C0}
+	EndGlobalSection
+EndGlobal
