@@ -34,7 +34,7 @@ namespace ScrapScissors
             LanguageAPI.Add("SCISSORS_PICK_TOKEN", "Converts defeated enemies into useful scrap material.");
             LanguageAPI.Add("SCISSORS_DESC_TOKEN", "Defeated enemies generate scrap that is converted to random items.");
             string longLore = "Order: Pair of Regulation Emergency Scissors" + Environment.NewLine +
-                              "Tracking Number: 15******" + Environment.NewLine + 
+                              "Tracking Number: 15******" + Environment.NewLine +
                               "Estimated Delivery: March 27, 2559" + Environment.NewLine +
                               "Shipping Method: Standard" + Environment.NewLine +
                               "Shipping Address: Hämeentie 135 A, P.O. Box 130, Helsinki, Finland" + Environment.NewLine +
@@ -72,10 +72,7 @@ namespace ScrapScissors
         private static void CharacterBody_OnInventoryChanged(On.RoR2.CharacterBody.orig_OnInventoryChanged orig, CharacterBody self)
         {
             orig(self);
-            if (!self.gameObject.GetComponent<ScissorBehaviour>() && self.inventory.GetItemCount(index) != 0)
-            {
-                self.gameObject.AddComponent<ScissorBehaviour>();
-            }
+            if (!self.gameObject.GetComponent<ScissorBehaviour>() && self.inventory.GetItemCount(index) != 0) self.gameObject.AddComponent<ScissorBehaviour>();
         }
     }
 }

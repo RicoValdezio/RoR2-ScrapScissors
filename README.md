@@ -4,13 +4,14 @@ This mod includes one new item: Rusty Scissors which is based loosely on the Rus
 When a monster is killed while this is in the inventory, a random amount of "scrap" will be given to the player (this is currently hidden).
 When the player reaches 100 scrap, they are given a random item from the Sacrifice loot table.
 
-Math Breakdown
+Base Math Breakdown
 ------------
-- Basic monsters give 5-10 scrap
-- Elite monsters give 10-25 scrap
-- Basic bosses give 50-100 scrap
-- Elite bosses give 100-200 scrap
-- Additional stacks of Rusty Scissors give the player a higher chance of rolling high scrap values
+- Basic monsters give 3 scrap
+- Elites give 2 times the base amount
+- Bosses give 5 times the base amount
+- These amounts can vary by 20% in either direction
+- The above values are all configurable
+- Each stack gives an additional luck check and 2 extra items per stage
 
 Known Issues/Planned Updates
 ------------
@@ -21,6 +22,7 @@ Known Issues/Planned Updates
 
 Changelog
 ------------
+1.2.0 - Modified internal math due to feedback, more configuration options
 1.1.0 - Fixed the readme, changed the lore, and added a bit of configuration
 1.0.0 - Initial Upload
 
