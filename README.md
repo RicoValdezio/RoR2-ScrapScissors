@@ -15,13 +15,11 @@ Base Math Breakdown
 
 Known Issues/Planned Updates
 ------------
-- Currently no ItemDisplayRules, so the model will not display on survivors
-- Might be a bit strong at the moment, will watch for feedback in the Discord
-- If balance is not easily solved by community feedback, some configuration is possible
 - A UI element is planned, just need to figure that out
 
 Changelog
 ------------
+1.3.0 - Added display rules for all base survivors
 1.2.0 - Modified internal math due to feedback, more configuration options
 1.1.0 - Fixed the readme, changed the lore, and added a bit of configuration
 1.0.0 - Initial Upload
