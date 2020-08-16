@@ -175,6 +175,19 @@ namespace ScrapScissors
                     localScale = generalScale * 10
                 }
             });
+            rules.Add("mdlCaptain", new ItemDisplayRule[]
+{
+                new ItemDisplayRule
+                {
+                    ruleType = ItemDisplayRuleType.ParentedPrefab,
+                    followerPrefab = followerPrefab,
+                    childName = "Pelvis",
+                    localPos = new Vector3(-0.22f, 0f, 0f),
+                    localAngles = new Vector3(0f, -0.05f, 0f),
+                    localScale = generalScale
+                }
+});
+
             CustomItem item = new CustomItem(def, rules);
             index = ItemAPI.Add(item);
         }

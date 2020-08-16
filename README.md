@@ -19,6 +19,7 @@ Known Issues/Planned Updates
 
 Changelog
 ------------
+1.4.0 - Updated for full release, and added Captain display rule
 1.3.0 - Added display rules for all base survivors
 1.2.0 - Modified internal math due to feedback, more configuration options
 1.1.0 - Fixed the readme, changed the lore, and added a bit of configuration
