@@ -12,14 +12,15 @@ namespace ScrapScissors
         private static int itemsGiven = 0, maxItemsGiven;
 
         internal static float maxScrap, baseScrap, eliteScalar, bossScalar, deviation;
-        internal static bool itemCapCheck;
+        internal static bool softCapCheck, hardCapCheck;
+        internal static int hardItemsGiven, softCapStep;
         private static float baseScrapLow, baseScrapHigh, eliteScrapLow, eliteScrapHigh, bossScrapLow, bossScrapHigh, bigBossScrapLow, bigBossScrapHigh;
 
         private void OnEnable()
         {
             dropTable = Resources.Load<PickupDropTable>("DropTables/dtSacrificeArtifact");
             body = gameObject.GetComponent<CharacterBody>();
-            maxItemsGiven = body.inventory.GetItemCount(ScissorItem.index) * 2;
+            maxItemsGiven = body.inventory.GetItemCount(ScissorItem.index) * softCapStep;
             CalculateScrapValues();
 
             On.RoR2.GlobalEventManager.OnCharacterDeath += GlobalEventManager_OnCharacterDeath;
@@ -28,12 +29,16 @@ namespace ScrapScissors
 
         private void LateUpdate()
         {
-            maxItemsGiven = body.inventory.GetItemCount(ScissorItem.index) * 2;
+            //Update the maxItemsGiven based on which cap options are enabled.
+            if (hardCapCheck && softCapCheck) maxItemsGiven = Mathf.Min(body.inventory.GetItemCount(ScissorItem.index) * softCapStep, hardItemsGiven);
+            else if (!hardCapCheck && softCapCheck) maxItemsGiven = body.inventory.GetItemCount(ScissorItem.index) * softCapStep;
+            else if (hardCapCheck && !softCapCheck) maxItemsGiven = hardItemsGiven;
+            else maxItemsGiven = int.MaxValue;
+
             if (scrapAmount >= maxScrap)
             {
                 scrapAmount -= maxScrap;
-                if (itemCapCheck && itemsGiven < maxItemsGiven) GiveItem();
-                else if(!itemCapCheck) GiveItem();
+                if (itemsGiven < maxItemsGiven) GiveItem();
             }
         }
 

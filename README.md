@@ -11,7 +11,12 @@ Base Math Breakdown
 - Bosses give 5 times the base amount
 - These amounts can vary by 20% in either direction
 - The above values are all configurable
-- Each stack gives an additional luck check and 2 extra items per stage
+
+- Soft Cap Enabled: Up to itemStacks * softCapStep items per stage, softCapStep can be set in config
+- Hard Cap Enabled: Up to hardCapAmount items per stage, hardCapAmount can be set in config
+- Both Caps Enabled: Up to the lesser of the two caps' items per stage
+- No Caps Enabled: No limit to the number of drops per stage
+
 
 Known Issues/Planned Updates
 ------------
@@ -19,6 +24,7 @@ Known Issues/Planned Updates
 
 Changelog
 ------------
+1.5.0 - Added config option to allow hard cap on drops per stage
 1.4.0 - Updated for full release, and added Captain display rule
 1.3.0 - Added display rules for all base survivors
 1.2.0 - Modified internal math due to feedback, more configuration options
@@ -31,5 +37,4 @@ Place the .dll in Risk of Rain 2\BepInEx\plugins
 
 Contact
 ------------
-If you have issues/suggestions leave them on the github as an issue/suggestion
-  or reach out to @Rico#6416 on the modding Discord.
+If you have issues/suggestions leave them on the github as an issue/suggestion or reach out to Rico#6416 on the modding Discord.
