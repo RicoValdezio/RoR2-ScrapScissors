@@ -24,6 +24,7 @@ Known Issues/Planned Updates
 
 Changelog
 ------------
+1.5.1 - Added NetworkCompatibility helper that I forgot
 1.5.0 - Added config option to allow hard cap on drops per stage
 1.4.0 - Updated for full release, and added Captain display rule
 1.3.0 - Added display rules for all base survivors
