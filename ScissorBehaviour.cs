@@ -6,10 +6,10 @@ namespace ScrapScissors
 {
     class ScissorBehaviour : MonoBehaviour
     {
-        private static float scrapAmount = 0f;
-        private static CharacterBody body;
+        internal float scrapAmount = 0f;
+        private CharacterBody body;
         private static PickupDropTable dropTable;
-        private static int itemsGiven = 0, maxItemsGiven;
+        private int itemsGiven = 0, maxItemsGiven;
 
         internal static float maxScrap, baseScrap, eliteScalar, bossScalar, deviation;
         internal static bool softCapCheck, hardCapCheck;
@@ -66,7 +66,7 @@ namespace ScrapScissors
             bigBossScrapHigh = baseScrap * eliteScalar * bossScalar * (1 + deviation);
         }
 
-        private static void GiveScrap(bool wasElite, bool wasBoss)
+        private void GiveScrap(bool wasElite, bool wasBoss)
         {
             bool wasEliteBoss = wasElite && wasBoss;
             float[] rolls = new float[body.inventory.GetItemCount(ScissorItem.index)];
@@ -79,10 +79,15 @@ namespace ScrapScissors
                 else value = Random.Range(baseScrapLow, baseScrapHigh);
                 rolls[roll] = value;
             }
-            scrapAmount += rolls.Max();
+            
+            if(body.bodyIndex == 34 || body.bodyIndex == 36) //Turrets give scrap to their Engi
+            {
+                body.master.GetComponent<MinionOwnership>().ownerMaster.GetBodyObject().GetComponent<ScissorBehaviour>().scrapAmount += rolls.Max();
+            }
+            else scrapAmount += rolls.Max();
         }
 
-        private static void GiveItem()
+        private void GiveItem()
         {
             itemsGiven++;
             PickupIndex index = dropTable.GenerateDrop(Run.instance.treasureRng);

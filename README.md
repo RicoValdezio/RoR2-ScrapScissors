@@ -24,6 +24,7 @@ Known Issues/Planned Updates
 
 Changelog
 ------------
+1.5.2 - Fixed bugs with Engineer and multiplayer that prevented drops in certain cases
 1.5.1 - Added NetworkCompatibility helper that I forgot
 1.5.0 - Added config option to allow hard cap on drops per stage
 1.4.0 - Updated for full release, and added Captain display rule
