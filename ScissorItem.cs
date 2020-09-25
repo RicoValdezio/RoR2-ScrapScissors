@@ -195,7 +195,11 @@ namespace ScrapScissors
         private static void CharacterBody_OnInventoryChanged(On.RoR2.CharacterBody.orig_OnInventoryChanged orig, CharacterBody self)
         {
             orig(self);
-            if (!self.gameObject.GetComponent<ScissorBehaviour>() && self.inventory.GetItemCount(index) != 0) self.gameObject.AddComponent<ScissorBehaviour>();
+            if (!self.gameObject.GetComponent<ScissorBehaviour>() && self.inventory.GetItemCount(index) != 0 && self.master.playerCharacterMasterController)
+            {
+                //Chat.AddMessage("Added a New ScissorBehaviour");
+                self.gameObject.AddComponent<ScissorBehaviour>();
+            }
         }
     }
 }

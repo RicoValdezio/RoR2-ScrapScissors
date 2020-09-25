@@ -12,6 +12,7 @@ Base Math Breakdown
 - These amounts can vary by 20% in either direction
 - The above values are all configurable
 
+
 - Soft Cap Enabled: Up to itemStacks * softCapStep items per stage, softCapStep can be set in config
 - Hard Cap Enabled: Up to hardCapAmount items per stage, hardCapAmount can be set in config
 - Both Caps Enabled: Up to the lesser of the two caps' items per stage
@@ -24,6 +25,7 @@ Known Issues/Planned Updates
 
 Changelog
 ------------
+1.5.3 - Changed hook to check if player controlled, should prevent odd behaviour with drones/turrets/clones
 1.5.2 - Fixed bugs with Engineer and multiplayer that prevented drops in certain cases
 1.5.1 - Added NetworkCompatibility helper that I forgot
 1.5.0 - Added config option to allow hard cap on drops per stage
