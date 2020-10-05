@@ -15,7 +15,10 @@ namespace ScrapScissors
             AddProvider();
             AddTokens();
             AddItem();
+
             On.RoR2.CharacterBody.OnInventoryChanged += CharacterBody_OnInventoryChanged;
+            On.RoR2.GlobalEventManager.OnCharacterDeath += GlobalEventManager_OnCharacterDeath;
+            On.RoR2.Run.EndStage += Run_EndStage;
         }
 
         private static void AddProvider()
@@ -195,10 +198,28 @@ namespace ScrapScissors
         private static void CharacterBody_OnInventoryChanged(On.RoR2.CharacterBody.orig_OnInventoryChanged orig, CharacterBody self)
         {
             orig(self);
-            if (!self.gameObject.GetComponent<ScissorBehaviour>() && self.inventory.GetItemCount(index) != 0 && self.master.playerCharacterMasterController)
+            if (!self.gameObject.GetComponent<ScissorBehaviour>() && self.inventory.GetItemCount(index) != 0)
             {
                 //Chat.AddMessage("Added a New ScissorBehaviour");
                 self.gameObject.AddComponent<ScissorBehaviour>();
+            }
+        }
+
+        private static void GlobalEventManager_OnCharacterDeath(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport damageReport)
+        {
+            orig(self, damageReport);
+            if (damageReport.attackerBody && damageReport.attackerBody.GetComponent<ScissorBehaviour>())
+            {
+                damageReport.attackerBody.GetComponent<ScissorBehaviour>().GiveScrap(damageReport.victimIsElite, damageReport.victimIsBoss);
+            }
+        }
+
+        private static void Run_EndStage(On.RoR2.Run.orig_EndStage orig, Run self)
+        {
+            orig(self);
+            foreach (ScissorBehaviour behaviour in ScissorsPlugin.activeBehaviours)
+            {
+                behaviour.itemsGiven = 0;
             }
         }
     }

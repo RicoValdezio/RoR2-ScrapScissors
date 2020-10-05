@@ -25,6 +25,7 @@ Known Issues/Planned Updates
 
 Changelog
 ------------
+1.6.0 - Refactored hook registry to allow turrets and drones to give scrap to their owner
 1.5.3 - Changed hook to check if player controlled, should prevent odd behaviour with drones/turrets/clones
 1.5.2 - Fixed bugs with Engineer and multiplayer that prevented drops in certain cases
 1.5.1 - Added NetworkCompatibility helper that I forgot

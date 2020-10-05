@@ -9,7 +9,7 @@ namespace ScrapScissors
         internal float scrapAmount = 0f;
         private CharacterBody body;
         private static PickupDropTable dropTable;
-        private int itemsGiven = 0, maxItemsGiven;
+        internal int itemsGiven = 0, maxItemsGiven;
 
         internal static float maxScrap, baseScrap, eliteScalar, bossScalar, deviation;
         internal static bool softCapCheck, hardCapCheck;
@@ -22,9 +22,12 @@ namespace ScrapScissors
             body = gameObject.GetComponent<CharacterBody>();
             maxItemsGiven = body.inventory.GetItemCount(ScissorItem.index) * softCapStep;
             CalculateScrapValues();
+            ScissorsPlugin.activeBehaviours.Add(this);
+        }
 
-            On.RoR2.GlobalEventManager.OnCharacterDeath += GlobalEventManager_OnCharacterDeath;
-            On.RoR2.Run.EndStage += Run_EndStage;
+        private void OnDisable()
+        {
+            ScissorsPlugin.activeBehaviours.Remove(this);
         }
 
         private void LateUpdate()
@@ -42,18 +45,6 @@ namespace ScrapScissors
             }
         }
 
-        private void GlobalEventManager_OnCharacterDeath(On.RoR2.GlobalEventManager.orig_OnCharacterDeath orig, GlobalEventManager self, DamageReport damageReport)
-        {
-            orig(self, damageReport);
-            if (damageReport.attackerBody && damageReport.attackerBody == body) GiveScrap(damageReport.victimIsElite, damageReport.victimIsBoss);
-        }
-
-        private void Run_EndStage(On.RoR2.Run.orig_EndStage orig, Run self)
-        {
-            orig(self);
-            itemsGiven = 0;
-        }
-
         private static void CalculateScrapValues()
         {
             baseScrapLow = baseScrap * (1 - deviation);
@@ -66,7 +57,7 @@ namespace ScrapScissors
             bigBossScrapHigh = baseScrap * eliteScalar * bossScalar * (1 + deviation);
         }
 
-        private void GiveScrap(bool wasElite, bool wasBoss)
+        internal void GiveScrap(bool wasElite, bool wasBoss)
         {
             bool wasEliteBoss = wasElite && wasBoss;
             float[] rolls = new float[body.inventory.GetItemCount(ScissorItem.index)];
@@ -79,8 +70,8 @@ namespace ScrapScissors
                 else value = Random.Range(baseScrapLow, baseScrapHigh);
                 rolls[roll] = value;
             }
-            
-            if(body.bodyIndex == 34 || body.bodyIndex == 36) //Turrets give scrap to their Engi
+
+            if (body.baseNameToken.Contains("TURRET") || body.baseNameToken.Contains("DRONE")) //Turrets and drones give scrap to their owner
             {
                 body.master.GetComponent<MinionOwnership>().ownerMaster.GetBodyObject().GetComponent<ScissorBehaviour>().scrapAmount += rolls.Max();
             }

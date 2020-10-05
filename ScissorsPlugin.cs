@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using R2API.Utils;
+using System.Collections.Generic;
 
 namespace ScrapScissors
 {
@@ -11,12 +12,14 @@ namespace ScrapScissors
     {
         private const string modName = "RustyScissors";
         private const string modGuid = "com.RicoValdezio." + modName;
-        private const string modVer = "1.5.3";
+        private const string modVer = "1.6.0";
         internal static ScissorsPlugin instance;
+        internal static List<ScissorBehaviour> activeBehaviours;
 
         private void Awake()
         {
             if (instance == null) instance = this;
+            activeBehaviours = new List<ScissorBehaviour>();
             ScissorConfig.Init();
             ScissorItem.Init();
         }
