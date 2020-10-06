@@ -2,17 +2,20 @@
 ------------
 This mod includes one new item: Rusty Scissors which is based loosely on the Rusted Key from RoR2 and the 56-Leaf Clover from RoR1.
 When a monster is killed while this is in the inventory, a random amount of "scrap" will be given to the player (this is currently hidden).
-When the player reaches 100 scrap, they are given a random item from the Sacrifice loot table.
+When the player reaches 100 "scrap", they are given a random item from the Sacrifice loot table.
+With either the hard cap or neither cap, each stack gives an additional luck roll, which means that each kill is more likely to give the max amount of "scrap" for its tier.
+With the soft cap enabled, each stack also increases the maximum number of drop per stage.
 
 Base Math Breakdown
 ------------
-- Basic monsters give 3 scrap
+- Basic monsters give 3 "scrap"
 - Elites give 2 times the base amount
 - Bosses give 5 times the base amount
 - These amounts can vary by 20% in either direction
 - The above values are all configurable
 
-
+Config Options
+------------
 - Soft Cap Enabled: Up to itemStacks * softCapStep items per stage, softCapStep can be set in config
 - Hard Cap Enabled: Up to hardCapAmount items per stage, hardCapAmount can be set in config
 - Both Caps Enabled: Up to the lesser of the two caps' items per stage
