@@ -12,7 +12,7 @@ namespace ScrapScissors
     {
         private const string modName = "RustyScissors";
         private const string modGuid = "com.RicoValdezio." + modName;
-        private const string modVer = "1.6.0";
+        private const string modVer = "1.6.1";
         internal static ScissorsPlugin instance;
         internal static List<ScissorBehaviour> activeBehaviours;
 

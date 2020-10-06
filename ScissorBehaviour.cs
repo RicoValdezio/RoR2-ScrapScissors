@@ -71,11 +71,19 @@ namespace ScrapScissors
                 rolls[roll] = value;
             }
 
-            if (body.baseNameToken.Contains("TURRET") || body.baseNameToken.Contains("DRONE")) //Turrets and drones give scrap to their owner
+            //Because purchaseable drones and turrets are dumb, we have to check if they actually rolled
+            float scrapResult = 0;
+            if(rolls.Count() > 0)
             {
-                body.master.GetComponent<MinionOwnership>().ownerMaster.GetBodyObject().GetComponent<ScissorBehaviour>().scrapAmount += rolls.Max();
+                scrapResult = rolls.Max();
             }
-            else scrapAmount += rolls.Max();
+
+            if (body.master && !body.master.playerCharacterMasterController && body.master.GetComponent<MinionOwnership>() &&
+                body.master.GetComponent<MinionOwnership>().ownerMaster.GetBodyObject().GetComponent<ScissorBehaviour>()) //Minions give scrap to their owner
+            {
+                body.master.GetComponent<MinionOwnership>().ownerMaster.GetBodyObject().GetComponent<ScissorBehaviour>().scrapAmount += scrapResult;
+            }
+            else scrapAmount += scrapResult;
         }
 
         private void GiveItem()
