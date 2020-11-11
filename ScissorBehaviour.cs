@@ -89,8 +89,16 @@ namespace ScrapScissors
         private void GiveItem()
         {
             itemsGiven++;
-            PickupIndex index = dropTable.GenerateDrop(Run.instance.treasureRng);
-            PickupDropletController.CreatePickupDroplet(index, body.corePosition, Vector3.up * 20f);
+            PickupIndex pickupIndex = dropTable.GenerateDrop(Run.instance.treasureRng);
+            if (ScissorsPlugin.isShareSuiteActive)
+            {
+                ItemIndex itemIndex = PickupCatalog.GetPickupDef(pickupIndex).itemIndex;
+                body.inventory.GiveItem(itemIndex);
+            }
+            else
+            {
+                PickupDropletController.CreatePickupDroplet(pickupIndex, body.corePosition, Vector3.up * 20f);
+            }
         }
     }
 }

@@ -22,6 +22,9 @@
     <Reference Include="BepInEx">
       <HintPath>..\..\..\..\Documents\Libs\BepInEx.dll</HintPath>
     </Reference>
+    <Reference Include="HGCSharpUtils">
+      <HintPath>..\..\..\..\Documents\Libs\HGCSharpUtils.dll</HintPath>
+    </Reference>
     <Reference Include="MMHOOK_Assembly-CSharp">
       <HintPath>..\..\..\..\Documents\Libs\MMHOOK_Assembly-CSharp.dll</HintPath>
     </Reference>
